@@ -14,7 +14,6 @@ import tabBar from '@/components/tab-bar/index.vue'
 const userInfo = userInfoStore()
 
 const nameInput = ref(userInfo.name)
-
 function onNameUpdate() {
   userInfo.updateUserInfo({ id: userInfo.id, name: nameInput.value })
 }
