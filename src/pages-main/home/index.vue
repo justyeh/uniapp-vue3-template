@@ -1,5 +1,5 @@
 <template>
-  <view class="content">{{ userInfo.name }}</view>
+  <view class="content">{{ userInfo.nickname }}</view>
   <tab-bar active="home" />
 </template>
 

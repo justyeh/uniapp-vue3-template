@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <div>{{ userInfo.name }}</div>
+    <div>{{ userInfo.nickname }}</div>
     <input type="text" v-model="nameInput" @input="onNameUpdate" />
   </div>
   <tab-bar active="mine" />
@@ -13,9 +13,9 @@ import tabBar from '@/components/tab-bar/index.vue'
 
 const userInfo = userInfoStore()
 
-const nameInput = ref(userInfo.name)
+const nameInput = ref(userInfo.nickname)
 function onNameUpdate() {
-  userInfo.updateUserInfo({ id: userInfo.id, name: nameInput.value })
+  userInfo.$patch({ nickname: nameInput.value })
 }
 </script>
 

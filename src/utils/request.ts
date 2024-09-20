@@ -1,29 +1,60 @@
-const BASE_URL = 'https://akyy.aikangcloud.com'
+import { getCurrentPagePath } from '@/utils/common'
+import { clearToken, getToken } from '@/utils/auth'
 
 enum ContentTypeEnum {
   'json' = 'application/json',
   'form' = 'application/x-www-form-urlencoded'
 }
 
-function request<ResponseData>(config: HttpRequestConfig): Promise<ResponseData> {
+function request<T>(config: HttpRequestConfig): Promise<T> {
+  const BASE_URL = import.meta.env.VITE_BASE_URL
   const showLoading = config.showLoading || true
-  const loadingText = config.loadingText || '加载中'
+  const loadingText = config.loadingText || '加载中...'
   const showFailToast = config.showFailToast || true
 
   if (showLoading) {
     uni.showLoading({ title: loadingText, icon: 'none' })
   }
 
+  // 设置header
+  const header: AnyObject = {
+    'content-type': config.contentType
+  }
+  const { key, value } = getToken()
+  if (key && value) {
+    header['aky_authorization_jwt'] = key
+    header[key] = value
+  }
+
   return new Promise((resolve, reject) => {
     uni.request({
       url: BASE_URL + config.url,
       data: config.data,
-      header: {
-        'content-type': config.contentType
-      },
+      header,
       method: config.method,
       success: (response) => {
-        console.error(response)
+        const data = (response.data || {}) as AnyObject
+        const code = Number(data?.retcode)
+        const errMsg = data?.errMsg || '系统开小差，请稍后再试'
+
+        if (code === 0) {
+          resolve(data as T)
+          return
+        }
+
+        if (code === 399) {
+          clearToken()
+          const currentPagePath = getCurrentPagePath()
+          if (currentPagePath) {
+            uni.reLaunch({ url: currentPagePath })
+          }
+          return
+        }
+
+        if (showFailToast) {
+          uni.showToast({ title: errMsg, icon: 'none' })
+        }
+        reject(data)
       },
       fail: (error) => {
         reject(error)

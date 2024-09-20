@@ -6,7 +6,7 @@ interface ListFunctionParams {
   pageSize: number
 }
 
-type ListFunction<T> = (params: ListFunctionParams) => Promise<ResponseData<T>>
+type ListFunction<T> = (params: ListFunctionParams) => Promise<PaginatedResponseData<T>>
 type GetParamsFunction = () => AnyObject
 
 export default function usePaginatedList<T>(listFn: ListFunction<T>, getParamsFn?: GetParamsFunction) {

@@ -2,8 +2,12 @@
   "name": "uni-preset-vue",
   "version": "0.0.0",
   "scripts": {
-    "dev": "uni -p mp-weixin",
-    "build": "uni build -p mp-weixin",
+    "dev": "uni -p mp-weixin --mode dev",
+    "test": "uni -p mp-weixin --mode test",
+    "release": "uni -p mp-weixin --mode release",
+    "build-dev": "uni build -p mp-weixin --mode dev",
+    "build-test": "uni build -p mp-weixin --mode test",
+    "build-release": "uni build -p mp-weixin --mode release",
     "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {

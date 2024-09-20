@@ -1,10 +1,8 @@
+// 检查更新
 export function checkVersionUpdate() {
-  // 获取小程序更新管理器实例
   const updateManager = uni.getUpdateManager()
 
-  // 监听小程序更新情况
   updateManager.onCheckForUpdate(function (res) {
-    // 发现新版本，提示用户更新
     if (res.hasUpdate) {
       updateManager.onUpdateReady(function () {
         uni.showModal({
@@ -21,6 +19,7 @@ export function checkVersionUpdate() {
   })
 }
 
+// 延迟执行
 export function sleep(time: number = 1000) {
   return new Promise<void>((resolve) => {
     const timer = setTimeout(() => {
@@ -28,4 +27,14 @@ export function sleep(time: number = 1000) {
       resolve()
     }, time)
   })
+}
+
+// 获取当前页面路径
+export function getCurrentPagePath(): string {
+  const pages = getCurrentPages()
+  if (pages.length === 0) {
+    return ''
+  }
+  const currentPage = pages[pages.length - 1]
+  return currentPage.route ? '/' + currentPage.route : ''
 }
