@@ -24,6 +24,7 @@ export function checkVersionUpdate() {
 export function sleep(time: number = 1000) {
   return new Promise<void>((resolve) => {
     const timer = setTimeout(() => {
+      clearTimeout(timer)
       resolve()
     }, time)
   })

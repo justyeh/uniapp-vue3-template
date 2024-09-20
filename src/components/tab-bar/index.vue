@@ -9,7 +9,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
 import safeAreaBottom from '@/components/safe-area/bottom.vue'
 
 // active高亮的path
