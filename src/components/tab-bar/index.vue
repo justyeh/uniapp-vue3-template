@@ -11,13 +11,15 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 import safeAreaBottom from '@/components/safe-area/bottom.vue'
+
+// active高亮的path
+defineProps({ active: String })
+
 function switchTab(tabName: string) {
   uni.switchTab({
     url: `/pages-main/${tabName}/index`
   })
 }
-
-const { active } = defineProps({ active: String })
 </script>
 
 <style scoped lang="less">

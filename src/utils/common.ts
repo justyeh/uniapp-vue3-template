@@ -4,8 +4,8 @@ export function checkVersionUpdate() {
 
   // 监听小程序更新情况
   updateManager.onCheckForUpdate(function (res) {
+    // 发现新版本，提示用户更新
     if (res.hasUpdate) {
-      // 发现新版本，提示用户更新
       updateManager.onUpdateReady(function () {
         uni.showModal({
           title: '更新提示',
