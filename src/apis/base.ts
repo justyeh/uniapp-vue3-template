@@ -12,3 +12,10 @@ export function getUserInfo() {
     url: '/user/app/patientInfo/getCurrentLoginPatient'
   })
 }
+
+export function weeklyMustRead(data: IWeeklyMustReadParams) {
+  return getRequest<PaginatedResponseData<IWeeklyMustRead>>({
+    url: '/pregnant/app/weeklyMustRead/pageList',
+    data
+  })
+}

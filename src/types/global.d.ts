@@ -23,6 +23,12 @@ interface PaginatedResponseData<T> extends ResponseData {
   }
 }
 
+// 分页参数
+interface ListFunctionParams {
+  pageNum: number
+  pageSize: number
+}
+
 // jwt信息
 interface ITokenInfo {
   jwt: string
@@ -35,4 +41,18 @@ interface IUserInfo {
   avatar: string
   mobile: string
   nickname: string
+}
+
+// 每周必读
+interface IWeeklyMustReadParams extends ListFunctionParams {
+  type: 'GESTATION'
+}
+
+interface IWeeklyMustRead {
+  id: number
+  title: string
+  cardList: {
+    cardTitle: string
+    cardContent: string
+  }[]
 }

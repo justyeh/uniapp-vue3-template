@@ -1,4 +1,4 @@
-import { getUserInfo, login } from '@/apis/basic'
+import { getUserInfo, login } from '@/apis/base'
 import { AppId } from '@/utils/config'
 import { userInfoStore } from '@/store/index'
 
@@ -52,10 +52,10 @@ export function getWxCode() {
 }
 
 // 登录+初始化用户信息
-export async function initApp() {
+export async function initAppData() {
   try {
     // 登录
-    if (!isLogin) {
+    if (!isLogin()) {
       await clearToken()
       const { code } = await getWxCode()
       const loginRes = await login({ appId: AppId, code, decryptPhoneCode: '' })
