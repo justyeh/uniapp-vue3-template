@@ -3,11 +3,14 @@
     <div>{{ userInfo.name }}</div>
     <input type="text" v-model="nameInput" @input="onNameUpdate" />
   </div>
+  <tab-bar active="mine" />
 </template>
 
 <script setup lang="ts">
 import { userInfoStore } from '@/store/index'
 import { ref } from 'vue'
+import tabBar from '@/components/tab-bar/index.vue'
+
 const userInfo = userInfoStore()
 
 const nameInput = ref(userInfo.name)
