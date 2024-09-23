@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <page>
     <div class="list">
       <div v-for="(item, index) in listData" :key="index" class="item">
         <div class="titel">{{ item.title }}</div>
@@ -7,7 +7,7 @@
     </div>
     <div v-if="listLoading">记载中</div>
     <div v-if="listFinished">没有更多了</div>
-  </div>
+  </page>
 </template>
 
 <script setup lang="ts">

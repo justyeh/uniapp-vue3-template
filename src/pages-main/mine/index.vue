@@ -1,9 +1,11 @@
 <template>
-  <div class="page">
-    <div>{{ userInfo.nickname }}</div>
-    <input type="text" v-model="nameInput" @input="onNameUpdate" />
-  </div>
-  <tab-bar active="mine" />
+  <page>
+    <div class="page">
+      <div>{{ userInfo.nickname }}</div>
+      <input type="text" v-model="nameInput" @input="onNameUpdate" />
+    </div>
+    <tab-bar active="mine" />
+  </page>
 </template>
 
 <script setup lang="ts">

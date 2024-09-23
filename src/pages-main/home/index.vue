@@ -1,10 +1,12 @@
 <template>
-  <div class="title">测试store</div>
-  <div class="content">{{ userInfo.nickname }}</div>
+  <page>
+    <div class="title">测试store</div>
+    <div class="content">{{ userInfo.nickname }}</div>
 
-  <div class="title">测试列表</div>
-  <div @click="goList">跳转到列表页面</div>
-  <tab-bar active="home" />
+    <div class="title">测试列表</div>
+    <div @click="goList">跳转到列表页面</div>
+    <tab-bar active="home" />
+  </page>
 </template>
 
 <script setup lang="ts">
