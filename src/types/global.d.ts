@@ -24,7 +24,7 @@ interface PaginatedResponseData<T> extends ResponseData {
 }
 
 // 分页参数
-interface ListFunctionParams {
+interface IListFunctionParams {
   pageNum: number
   pageSize: number
 }
@@ -44,10 +44,9 @@ interface IUserInfo {
 }
 
 // 每周必读
-interface IWeeklyMustReadParams extends ListFunctionParams {
+interface IWeeklyMustReadParams extends IListFunctionParams {
   type: 'GESTATION'
 }
-
 interface IWeeklyMustRead {
   id: number
   title: string
